@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华北交付中心 · 优秀数学师资团队</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e1117;
+    --ink-light: #3a3f4b;
+    --ink-muted: #7a8093;
+    --gold: #c89a3b;
+    --gold-light: #e8c06a;
+    --gold-pale: #fdf6e3;
+    --red: #b84c3a;
+    --bg: #f8f5f0;
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --border: #e8e0d4;
+    --shadow: 0 4px 24px rgba(14,17,23,0.08);
+    --shadow-hover: 0 12px 40px rgba(14,17,23,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 80px 24px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,154,59,0.18) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '数';
+    position: absolute;
+    right: -40px;
+    bottom: -60px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 320px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-org {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero-update {
+    margin-top: 28px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1.5px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,154,59,0.15);
+    border: 1px solid rgba(200,154,59,0.4);
+    color: var(--gold-light);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero p {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* ── DIVIDER ── */
+  .section-header {
+    padding: 56px 24px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .section-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+  .section-count {
+    font-size: 13px;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    padding: 0 24px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-right: 4px;
+    font-weight: 500;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--ink-light);
+    font-size: 13px;
+    font-family: 'Noto Sans SC', sans-serif;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .search-input {
+    margin-left: auto;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Noto Sans SC', sans-serif;
+    outline: none;
+    width: 200px;
+    background: var(--white);
+    transition: border-color .2s;
+  }
+  .search-input:focus { border-color: var(--gold); }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 24px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+    cursor: default;
+    animation: fadeUp .4s ease both;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-top {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--gold-light);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-info { flex: 1; min-width: 0; }
+  .card-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .card-school {
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .score-badge {
+    background: var(--ink);
+    color: var(--gold-light);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .score-badge span {
+    display: block;
+    font-size: 10px;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: rgba(255,255,255,0.4);
+    margin-top: 3px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  /* Score coloring */
+  .score-150 { background: #1a0a00; color: #ffd700; }
+  .score-149, .score-148, .score-147, .score-146 { background: #0e1a00; color: #a8e060; }
+  .score-145, .score-144, .score-143, .score-142 { background: #001520; color: #60c8e8; }
+
+  .card-body { padding: 16px 24px 20px; }
+
+  .comp-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: #7a5a10;
+    border: 1px solid rgba(200,154,59,0.3);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .no-comp { display: none; }
+
+  .exp-text {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+  .exp-text::before {
+    content: '▸ ';
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* hidden class */
+  .card.hidden { display: none; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 20px 48px; }
+    .hero-stats { gap: 32px; }
+    .stat-num { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; padding: 0 16px 60px; }
+    .search-input { width: 100%; margin-left: 0; margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-org">华北交付中心</div>
+  <div class="hero-badge">优质师资 · 精准提分</div>
+  <h1>专业数学<em>伴学团队</em></h1>
+  <p>汇聚清华、北大、中科大等顶尖高校学子，高考数学130+，竞赛成绩突出</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">1000+</div>
+      <div class="stat-label">总在册伴学教练 · 持续增长中</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-num">985/211</div>
+      <div class="stat-label">名校师资占比高</div>
+    </div>
+ 
+    <div class="stat-item">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">平均提分</div>
+    </div>
+  
+  </div>
+  <div class="hero-update">数据更新日期：2026年3月25日</div>
+</section>
+
+<!-- SECTION HEADER -->
+<div class="section-header">
+  <h2>全部教师</h2>
+  <div class="section-line"></div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">高考分数：</span>
+  <button class="filter-btn active" data-filter="all">全部</button>
+  <button class="filter-btn" data-filter="150">满分150</button>
+  <button class="filter-btn" data-filter="145+">145分+</button>
+  <button class="filter-btn" data-filter="140+">140分+</button>
+  <button class="filter-btn" data-filter="135+">135分+</button>
+  <button class="filter-btn" data-filter="comp">有竞赛奖项</button>
+  <input class="search-input" type="text" placeholder="🔍 搜索姓名 / 学校" id="searchInput">
+</div>
+
+<!-- GRID -->
+<div class="grid" id="teacherGrid"></div>
+
+<footer>© 华北交付中心 · 专业 · 严谨 · 负责 · 数据更新日期 2026年3月25日</footer>
+
+<script>
+const teachers = [
+  {name:"张优优",school:"北京工业大学 工商管理",score:150,comp:"市三等奖",exp:"累计辅导70+学生，提分至少27分"},
+  {name:"文柏霖",school:"中国科学院大学 理论物理",score:150,comp:"全国高中数学联赛二等奖，全国大学生数学竞赛决赛二等奖",exp:"累计辅导10+学生，平均提分15"},
+  {name:"方振峰",school:"安徽师范大学 管理",score:150,comp:"",exp:"累计辅导近2000多学生"},
+  {name:"何鹏翔",school:"北京航空航天大学 飞行器质量与可靠性",score:149,comp:"大学生竞赛市二等奖，全国三等奖",exp:"累计辅导15+学生，平均提分20+"},
+  {name:"胡涛涛",school:"清华大学 工程力学",score:149,comp:"省三等奖",exp:"辅导过3位学生，提升15分左右"},
+  {name:"张莹莹",school:"延边大学",score:148,comp:"",exp:"累计辅导500名以上学生，从业13年"},
+  {name:"杨雨乐",school:"中央财经大学 统计与数学学院",score:147,comp:"",exp:"累计辅导4+学生，平均提分20"},
+  {name:"曹纪龙",school:"中国科学院大学 基础数学",score:146,comp:"陕西省大学生高等数学竞赛一等奖 全国大学生数学竞赛三等奖",exp:"辅导高中数学累计学生100+"},
+  {name:"马健",school:"博士 图卢兹大学 基础数学",score:145,comp:"高中数学竞赛省二等奖 全国大学生数学竞赛一等奖",exp:"累计辅导十余个学生均显著提分"},
+  {name:"明子博",school:"吉林大学 数学学院统计专业",score:145,comp:"",exp:"6年高中数学家教经验"},
+  {name:"石洋竹",school:"中央财经大学 数学与应用数学",score:145,comp:"小学奥数，奥赛省一",exp:"累计辅导3名学生，平均提分15分"},
+  {name:"唐淑怡",school:"中国科学院大学 心理学系",score:145,comp:"",exp:"辅导多层次学生全科进步显著"},
+  {name:"景欢",school:"海南大学 数学与应用数学",score:145,comp:"全国数学竞赛",exp:"辅导名校学生平均提分30分"},
+  {name:"任晨嘉",school:"哈尔滨工业大学 大数据管理与应用",score:144,comp:"",exp:"辅导多名学生高考数学提分40+"},
+  {name:"张阳",school:"北京大学 临床医学",score:144,comp:"",exp:"14年教学经验"},
+  {name:"王超俊",school:"北京邮电大学 计算机科学与技术",score:144,comp:"",exp:"累计辅导20+学生均提升10分以上"},
+  {name:"王紫城",school:"中央财经大学 会计学",score:144,comp:"",exp:"累计辅导4位学生"},
+  {name:"楼佳程",school:"温州医科大学 临床医学",score:143,comp:"",exp:"辅导高数零基础学生期末98分"},
+  {name:"胡宇轩",school:"东北师范大学 数学与应用数学",score:143,comp:"",exp:"累计辅导6位学生经验丰富"},
+  {name:"张会",school:"北京大学 应用数学",score:143,comp:"",exp:"应用数学专业背景扎实"},
+  {name:"张海博",school:"浙江大学 地球信息科学",score:143,comp:"浙江数学竞赛省二",exp:"累计十几名学生均提分明显"},
+  {name:"王涵",school:"西南财经大学 精算",score:142,comp:"成都市二等奖",exp:"累计辅导10+学生平均提分30"},
+  {name:"李柏辉",school:"清华大学",score:142,comp:"省二等奖",exp:"累计辅导10人以上提分20-30分"},
+  {name:"鹿柯楠",school:"西安交通大学 核工程与核技术",score:142,comp:"河北省数学竞赛二等奖",exp:"5年教龄辅导50+学生平均提分20-50"},
+  {name:"马一钧",school:"北京航空航天大学 飞行器动力工程",score:142,comp:"",exp:"两段辅导经验数学最高提分40分"},
+  {name:"唐浩航",school:"榆林学院 机械设计制造及自动化",score:141,comp:"",exp:"累计辅导100名学生平均提分20分"},
+  {name:"祖永哲",school:"哈尔滨工业大学 AI先进技术领军班",score:141,comp:"省二等奖",exp:"累计辅导5+学生数学平均提分30+"},
+  {name:"周思羽",school:"中国地质大学（北京）信息管理",score:141,comp:"",exp:"累计辅导四位学生平均提分35+"},
+  {name:"梁树玉",school:"北京师范大学 数学系",score:141,comp:"",exp:"多名学生从40分提至100+分"},
+  {name:"袁坤龙",school:"北京理工大学 数学与应用数学",score:141,comp:"全国数学竞赛二等奖",exp:"累计辅导10+学生平均提分17分"},
+  {name:"殷慧琳",school:"北京工业大学 数字媒体",score:141,comp:"",exp:"高中数学提分经验丰富家长好评"},
+  {name:"谷晓晴",school:"上海理工大学 生物医学工程",score:141,comp:"",exp:"累计辅导40+学生平均提分20+"},
+  {name:"苏虹铄",school:"东北农业大学 水利专业",score:141,comp:"数学建模竞赛二等奖",exp:"3年1V1教学经验"},
+  {name:"王奕瑾",school:"中国政法大学 国际商务和法学",score:141,comp:"省二等奖",exp:"数学辅导学生4个月提分22分"},
+  {name:"卞珍",school:"华东理工大学 工程管理",score:141,comp:"区二等奖",exp:"累计辅导80名学生平均提分16分"},
+  {name:"闻庆伟",school:"吉林大学 数学与应用数学",score:140,comp:"上海市高中数学联赛一等奖",exp:"辅导案例提分最高从80到130"},
+  {name:"臧俊宇",school:"北京航空航天大学 人工智能",score:140,comp:"全国大学生数学竞赛一等奖",exp:"辅导高一学生年级50名提高到20名"},
+  {name:"李心田",school:"中国海洋大学",score:140,comp:"一等奖",exp:"辅导高二学生从50分提高到100分"},
+  {name:"陈书悦",school:"首都医科大学 儿科学",score:140,comp:"初中奥赛二等奖",exp:"辅导初高中学生成绩显著提升"},
+  {name:"石如金",school:"北京理工大学 动力学与控制",score:140,comp:"大学生数学竞赛省二等奖",exp:"累计辅导10余人平均提升15分"},
+  {name:"陈佳欣",school:"东南大学 海洋信息专业",score:140,comp:"县一等奖",exp:"辅导高三数学从87提至高考114"},
+  {name:"叶长园",school:"河北工业大学 汉语国际教育",score:140,comp:"河北省数学竞赛一等奖",exp:"从2023年持续从事数学教学最高提分40分"},
+  {name:"王长勇",school:"北京理工大学 机电工程",score:139,comp:"市二等奖",exp:"累计辅导50+学生圆梦985"},
+  {name:"毛钶涵",school:"南京理工大学 智能科学与技术",score:139,comp:"",exp:"一名高二学生一个暑假从80提升到130"},
+  {name:"马思远",school:"上海交通大学 计算机专业",score:139,comp:"山西省竞赛三等奖",exp:"辅导大学生平均提分30分"},
+  {name:"罗翠翠",school:"白城师范学院 数学",score:139,comp:"县一等奖",exp:"高中数学辅导多年最高提分29分"},
+  {name:"王丽",school:"上海大学 数学与应用数学",score:139,comp:"",exp:"累计辅导5+学生提分80"},
+  {name:"孙一菲",school:"中央财经大学",score:139,comp:"全国大学生数学竞赛决赛",exp:"辅导多名高中生成绩大幅提升"},
+  {name:"江慧敏",school:"东北师范大学 数学与应用数学",score:139,comp:"全国大学生数学竞赛省三等奖",exp:"辅导高二女生一学期从20分提至89分"},
+  {name:"徐子涵",school:"西南大学 数学与应用数学",score:139,comp:"",exp:"带过多届学生提分20分"},
+  {name:"虎文豪",school:"武汉理工大学 人工智能",score:138,comp:"高妙数学一等奖 市一等奖",exp:"线下带四个学生不到一学期平均提分三四十"},
+  {name:"任伟",school:"河海大学",score:138,comp:"",exp:"辅导多名初中生提高成绩20分左右"},
+  {name:"杨辉",school:"长沙理工大学 数学与应用数学",score:138,comp:"省二等奖",exp:"辅导高中初中学生提分20+"},
+  {name:"成姝锦",school:"中科院化学所 博士",score:138,comp:"",exp:"累计辅导10学生提分20"},
+  {name:"叶沁润",school:"哈尔滨工程大学 金融学",score:138,comp:"奥数赛省一",exp:"累计辅导4+学生平均提分15+"},
+  {name:"韩露",school:"华中师范大学 数学与应用数学",score:138,comp:"省二等奖",exp:"累计辅导学生20人平均提分30分"},
+  {name:"周恩佳",school:"东北大学 机械工程",score:138,comp:"",exp:"累计辅导3+学生平均提分20"},
+  {name:"陈梅兰",school:"海南师范大学 数学与应用数学",score:138,comp:"全国大学生数学竞赛省一等奖",exp:"辅导初中生从44分提升到86分"},
+  {name:"安佳宇",school:"电子科技大学 软件工程",score:137,comp:"",exp:"辅导数学学生10+"},
+  {name:"薛智璇",school:"北京航空航天大学 计算与智能科学",score:137,comp:"",exp:"累计辅导两学生提分15+"},
+  {name:"李彦潼",school:"中国矿业大学（北京）数学与应用数学",score:137,comp:"北京市全国大学生数学竞赛一等奖",exp:"多名学生提分40+"},
+  {name:"任顺杰",school:"武汉大学 数学与统计学院 计算数学硕士",score:137,comp:"数学建模竞赛省二等奖",exp:"辅导学生高一提分25分"},
+  {name:"魏李权",school:"西安交通大学 计算机专业",score:137,comp:"太原市一等奖",exp:"线上线下累计辅导10+学生平均提升十几分"},
+  {name:"詹晓东",school:"中山大学 电子与通信工程系硕士",score:137,comp:"全国高中数学联合竞赛三等奖",exp:"辅导多名学生10次课后明显提高"},
+  {name:"王楚博",school:"北京航空航天大学 可靠性与系统工程",score:137,comp:"",exp:"半年辅导5+学生平均提分15分"},
+  {name:"张澜",school:"北京邮电大学 通信工程",score:136,comp:"北京市数学二等奖",exp:"辅导初高中学生提分显著"},
+  {name:"李云飞",school:"深圳技术大学 电子科学与技术",score:136,comp:"全国大学生数学竞赛一等奖",exp:"累计辅导3学生提分20+"},
+  {name:"梁荣森",school:"华南理工大学 工程管理",score:136,comp:"",exp:"辅导高中生从90提至122分"},
+  {name:"张灵溢",school:"北京邮电大学 通信工程",score:136,comp:"市一等奖",exp:"累计辅导4学生平均提分10-15分"},
+  {name:"张怡婕",school:"北京邮电大学",score:136,comp:"大学生数学竞赛二等奖",exp:"累计辅导5+学生平均提分15+"},
+  {name:"朱健",school:"河海大学 地质资源与地质工程",score:136,comp:"大学生数学竞赛二等奖",exp:"4年半教学累计辅导40+高中生"},
+  {name:"郝前程",school:"清华大学 智能科学与技术",score:135,comp:"大学生数学竞赛国家级二等奖",exp:"辅导高三两个月110提至130+"},
+  {name:"陈浩东",school:"陕西师范大学",score:135,comp:"第十五届全国大学生数学竞赛国家级一等奖",exp:"辅导高三数学拔高最高138"},
+  {name:"吴向悦",school:"硕士 中国民航大学",score:135,comp:"河北省数学竞赛二等奖",exp:"辅导200余名学生突破高考120+"},
+  {name:"何书洋",school:"吉林大学 基础数学 硕士",score:135,comp:"",exp:"累计辅导30+学生平均提分20+"},
+  {name:"褚紫媛",school:"研究生 吉林大学 数学",score:135,comp:"全国大学生数学竞赛二等奖",exp:"累计授课100余人超千小时"},
+  {name:"谷佳飞",school:"北京理工大学 车辆工程",score:132,comp:"中国大学生数学竞赛国家二等奖",exp:"辅导河北和北京高中生平均提分30+"},
+  {name:"侯帅",school:"中国矿业大学 物理实验班",score:132,comp:"江苏省数学奥林匹克竞赛一等奖",exp:"累计辅导62名学生平均提升30%"},
+  {name:"王紫玥",school:"中国科学技术大学",score:132,comp:"全国中学生数学能力竞赛二等奖",exp:"家教近三年累计70+学生高考成绩突出"},
+  {name:"钱龙",school:"北京科技大学 材料科学与工程",score:131,comp:"北京市数学竞赛一等奖",exp:"辅导高中生从82提至115分"},
+  {name:"赵培栋",school:"华东师范大学 数学应用与数学",score:130,comp:"市一等奖",exp:"辅导多名初高中生平均提分30+"},
+  {name:"樊颗",school:"同济大学 车辆工程",score:130,comp:"全国大学生数学建模竞赛全国二等奖",exp:"带过60+学生初中提分40"},
+  {name:"宋老师",school:"北京大学",score:134,comp:"",exp:"辅导经验丰富"},
+];
+
+// Sort by score desc
+teachers.sort((a,b)=>b.score-a.score);
+
+const grid = document.getElementById('teacherGrid');
+const countLabel = document.getElementById('countLabel');
+
+function getScoreClass(s) {
+  if(s===150) return 'score-150';
+  if(s>=147) return 'score-149';
+  if(s>=143) return 'score-145';
+  return '';
+}
+
+function getAvatarColor(name) {
+  const colors = [
+    ['#1a1a2e','#e8c06a'],['#0d1b2a','#60c8e8'],['#1a0a00','#ffd700'],
+    ['#0a1628','#a8e060'],['#1e0a1e','#f0a0d0'],['#0a1e0a','#80e880'],
+  ];
+  let h = 0; for(let c of name) h = (h*31+c.charCodeAt(0))%colors.length;
+  return colors[h];
+}
+
+function renderCards(list) {
+  grid.innerHTML = '';
+  list.forEach((t, i) => {
+    const [bg, fg] = getAvatarColor(t.name);
+    const surname = t.name === '宋老师' ? '宋' : t.name[0];
+  const displayName = surname + '老师';
+  const firstChar = surname;
+    const hasComp = t.comp && t.comp !== '' && t.comp !== '无' && t.comp !== '暂无';
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = (i % 12 * 40) + 'ms';
+    card.dataset.score = t.score;
+    card.dataset.comp = hasComp ? '1' : '0';
+    card.dataset.name = t.name;
+    card.dataset.school = t.school;
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="avatar" style="background:${bg};color:${fg}">${firstChar}</div>
+        <div class="card-info">
+          <div class="card-name">${displayName}</div>
+          <div class="card-school">${t.school}</div>
+        </div>
+        <div class="score-badge ${getScoreClass(t.score)}">${t.score}<span>高考数学</span></div>
+      </div>
+      <div class="card-body">
+        ${hasComp ? `<div class="comp-tag">🏆 ${t.comp.length>28?t.comp.slice(0,28)+'…':t.comp}</div>` : ''}
+        <div class="exp-text">${t.exp}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  document.getElementById('count-label').textContent = `共 ${list.length} 位`;
+}
+
+renderCards(teachers);
+
+// Filter logic
+let currentFilter = 'all';
+let currentSearch = '';
+
+function applyFilters() {
+  const cards = grid.querySelectorAll('.card');
+  let visible = 0;
+  cards.forEach(card => {
+    const score = parseInt(card.dataset.score);
+    const comp = card.dataset.comp;
+    const name = card.dataset.name;
+    const school = card.dataset.school;
+    let show = true;
+    if(currentFilter === '150') show = score === 150;
+    else if(currentFilter === '145+') show = score >= 145;
+    else if(currentFilter === '140+') show = score >= 140;
+    else if(currentFilter === '135+') show = score >= 135;
+    else if(currentFilter === 'comp') show = comp === '1';
+    if(currentSearch) {
+      const q = currentSearch.toLowerCase();
+      show = show && (name.includes(currentSearch) || school.includes(currentSearch));
+    }
+    card.classList.toggle('hidden', !show);
+    if(show) visible++;
+  });
+  document.getElementById('count-label').textContent = `共 ${visible} 位`;
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    currentFilter = this.dataset.filter;
+    applyFilters();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  currentSearch = this.value.trim();
+  applyFilters();
+});
+</script>
+</body>
+</html>
