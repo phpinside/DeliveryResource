@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华北交付中心 · 数理化专业交付</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e1117;
+    --ink-light: #3a3f4b;
+    --ink-muted: #7a8093;
+    --gold: #c89a3b;
+    --gold-light: #e8c06a;
+    --gold-pale: #fdf6e3;
+    --bg: #f8f5f0;
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --border: #e8e0d4;
+    --shadow: 0 4px 24px rgba(14,17,23,0.08);
+    --shadow-hover: 0 12px 40px rgba(14,17,23,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 80px 24px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,154,59,0.18) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '交付';
+    position: absolute;
+    right: -40px;
+    bottom: -60px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 320px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-org {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,154,59,0.15);
+    border: 1px solid rgba(200,154,59,0.4);
+    color: var(--gold-light);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero p {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    padding: 56px 24px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* ── SUBJECTS ── */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0 24px 48px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .subject-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--gold);
+  }
+  .subject-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform .25s ease;
+  }
+  .subject-card:hover::before {
+    transform: scaleX(1);
+  }
+  .subject-icon {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .subject-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .subject-stat {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+  .subject-stat strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .subject-arrow {
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 16px;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .subject-card:hover .subject-arrow {
+    opacity: 1;
+  }
+
+  /* ── NAVIGATION ── */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 24px 48px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .nav-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--gold);
+  }
+  .nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    transform: scaleY(0);
+    transition: transform .25s ease;
+  }
+  .nav-card:hover::before {
+    transform: scaleY(1);
+  }
+  .nav-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: var(--gold-pale);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .nav-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .nav-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .nav-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .nav-arrow {
+    font-size: 14px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 24px 48px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .highlight-item {
+    background: var(--ink);
+    color: var(--white);
+    padding: 24px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .highlight-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+  .highlight-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color .2s;
+  }
+  footer a:hover {
+    color: var(--gold-light);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 56px 20px 48px; }
+    .hero-stats { gap: 32px; }
+    .subjects-grid {
+      grid-template-columns: 1fr;
+      padding: 0 16px 40px;
+    }
+    .nav-grid {
+      grid-template-columns: 1fr;
+      padding: 0 16px 40px;
+    }
+    .highlights-grid {
+      grid-template-columns: 1fr;
+      padding: 0 16px 40px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-org">华北交付中心</div>
+  <div class="hero-badge">专业 · 可信 · 数据驱动</div>
+  <h1>数理化<em>专业交付</em></h1>
+  <p>汇聚顶尖师资力量，系统化教学管理，持续追踪提分成果</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">3000+</div>
+      <div class="stat-label">数理化师资</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">平均提分</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">37分</div>
+      <div class="stat-label">最快提分 · 高三 · 4小时</div>
+    </div>
+  </div>
+</section>
+
+<!-- 学科交付 -->
+<div class="section-header">
+  <h2>学科交付</h2>
+  <div class="section-line"></div>
+</div>
+
+<div class="subjects-grid">
+  <a href="teachers.html" class="subject-card">
+    <div class="subject-icon">数</div>
+    <div class="subject-name">数学</div>
+    <div class="subject-stat"><strong>3000+</strong> 师资团队</div>
+    <div class="subject-stat">平均提分 <strong>15+</strong></div>
+    <div class="subject-arrow">查看师资团队 →</div>
+  </a>
+
+  <div class="subject-card">
+    <div class="subject-icon">物</div>
+    <div class="subject-name">物理</div>
+    <div class="subject-stat"><strong>3000+</strong> 师资团队</div>
+    <div class="subject-stat">平均提分 <strong>15+</strong></div>
+    <div class="subject-arrow">敬请期待 →</div>
+  </div>
+
+  <div class="subject-card">
+    <div class="subject-icon">化</div>
+    <div class="subject-name">化学</div>
+    <div class="subject-stat"><strong>3000+</strong> 师资团队</div>
+    <div class="subject-stat">平均提分 <strong>15+</strong></div>
+    <div class="subject-arrow">敬请期待 →</div>
+  </div>
+</div>
+
+<!-- 核心系统 -->
+<div class="section-header">
+  <h2>核心系统</h2>
+  <div class="section-line"></div>
+</div>
+
+<div class="nav-grid">
+  <a href="https://tutor.bytemath.cn/admin/teachers" target="_blank" class="nav-card">
+    <div class="nav-icon">👥</div>
+    <div class="nav-content">
+      <div class="nav-title">伴学引导系统</div>
+      <div class="nav-desc">教练管理与调度中心</div>
+    </div>
+    <div class="nav-arrow">→</div>
+  </a>
+
+  <a href="https://manage.chulu.net/coach-library" target="_blank" class="nav-card">
+    <div class="nav-icon">📚</div>
+    <div class="nav-content">
+      <div class="nav-title">eduflow 教学管理系统</div>
+      <div class="nav-desc">教学资源与课程管理</div>
+    </div>
+    <div class="nav-arrow">→</div>
+  </a>
+
+  <a href="https://fn73lnaiyt.feishu.cn/wiki/LqlAwVa9ti37SgkZKI5cxr6knkf?fromScene=spaceOverview" target="_blank" class="nav-card">
+    <div class="nav-icon">📖</div>
+    <div class="nav-content">
+      <div class="nav-title">伴学教练培训手册</div>
+      <div class="nav-desc">标准化培训与能力提升</div>
+    </div>
+    <div class="nav-arrow">→</div>
+  </a>
+
+  <a href="https://my.feishu.cn/base/IaYDbyba6aehaosU0Aecq4n1nOf?table=tblKfaF5SDoDZVp0&view=vewQx72054" target="_blank" class="nav-card">
+    <div class="nav-icon">✨</div>
+    <div class="nav-content">
+      <div class="nav-title">优秀素材案例</div>
+      <div class="nav-desc">精选教学素材与案例库</div>
+    </div>
+    <div class="nav-arrow">→</div>
+  </a>
+</div>
+
+<!-- 优势亮点 -->
+<div class="section-header">
+  <h2>核心优势</h2>
+  <div class="section-line"></div>
+</div>
+
+<div class="highlights-grid">
+  <div class="highlight-item">
+    <div class="highlight-num">顶尖师资</div>
+    <div class="highlight-text">985/211名校占比高 · 竞赛背景突出</div>
+  </div>
+  <div class="highlight-item">
+    <div class="highlight-num">数据驱动</div>
+    <div class="highlight-text">追踪提分效果 · 持续优化教学</div>
+  </div>
+  <div class="highlight-item">
+    <div class="highlight-num">系统管理</div>
+    <div class="highlight-text">标准化流程 · 全链路质量管控</div>
+  </div>
+  <div class="highlight-item">
+    <div class="highlight-num">持续迭代</div>
+    <div class="highlight-text">培训体系完善 · 素材案例沉淀</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 华北交付中心 · 专业 · 严谨 · 负责</p>
+  <p style="margin-top: 8px; color: rgba(255,255,255,0.3);">
+    <a href="teachers.html">师资团队</a>
+    <span>|</span>
+    <span>数据更新于 2026年6月</span>
+  </p>
+</footer>
+
+</body>
+</html>
