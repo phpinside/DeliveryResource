@@ -108,29 +108,9 @@
     color: rgba(255,255,255,0.58);
     font-size: 15px;
     max-width: 640px;
-    margin: 0 auto 44px;
+    margin: 0 auto;
     line-height: 1.8;
     font-weight: 300;
-  }
-  .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 52px;
-    flex-wrap: wrap;
-  }
-  .stat-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: clamp(32px, 3.6vw, 44px);
-    font-weight: 900;
-    color: var(--gold-light);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .stat-num small { font-size: 0.5em; margin-left: 2px; }
-  .stat-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 1px;
   }
 
   /* ── TOOLBAR ── */
@@ -481,7 +461,6 @@
   }
   @media (max-width: 620px) {
     .hero { padding: 48px 20px 40px; }
-    .hero-stats { gap: 30px; }
     .grid { column-count: 2; padding: 12px 16px 40px; }
     .toolbar { padding: 12px 16px; }
     .result-meta { padding: 18px 16px 6px; }
@@ -501,7 +480,6 @@
     <div class="hero-badge">审核通过 · 真实可查</div>
     <h1>2026年中高考<em>提分案例</em></h1>
     <p>每一份喜报，都是学员的坚持、教练的专业与团队的协同共同写下的结果</p>
-    <div class="hero-stats" id="heroStats"></div>
   </div>
 </section>
 
@@ -636,24 +614,6 @@ buildPills('exam', filterGroups[0]);
 buildPills('subject', filterGroups[1]);
 buildPills('team', filterGroups[2]);
 
-/* ── 统计 ── */
-function renderStats() {
-  const maxGain = Math.max(...CASES.filter(c => c.gain).map(c => c.gain));
-  const coaches = new Set(CASES.flatMap(c => c.coach.split('/').map(s => s.trim())));
-  const subjects = new Set(CASES.map(c => c.subject));
-  const stats = [
-    { num: CASES.length, label: '优秀提分案例' },
-    { num: maxGain, suffix: '分', label: '最高提分' },
-    { num: coaches.size, suffix: '位', label: '伴学教练' },
-    { num: subjects.size, suffix: '科', label: '覆盖学科' }
-  ];
-  $('heroStats').innerHTML = stats.map(s => `
-    <div class="stat-item">
-      <div class="stat-num">${s.num}${s.suffix ? `<small>${s.suffix}</small>` : ''}</div>
-      <div class="stat-label">${s.label}</div>
-    </div>`).join('');
-}
-
 /* ── 过滤 + 排序 ── */
 function visibleCases() {
   const q = state.q.trim().toLowerCase();
@@ -775,7 +735,6 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── 启动 ── */
-renderStats();
 render();
 </script>
 </body>
