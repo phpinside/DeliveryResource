@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从需求下单、教练主动申请，到系统数据辅助比较、排课老师综合选派，了解伴学教练如何为孩子择优匹配。附真实系统截图及家长沟通说明。">
+<title>伴学教练择优匹配机制 · 华北交付中心</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e1117;
+    --text: #3a3f4b;
+    --muted: #686e7d;
+    --gold: #9b7124;
+    --gold-light: #e8c06a;
+    --gold-pale: #fdf6e3;
+    --bg: #f8f5f0;
+    --border: #e8e0d4;
+    --white: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', sans-serif; line-height: 1.8; }
+  a { color: inherit; }
+  button { font: inherit; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+  .wrap { width: min(1072px, calc(100% - 48px)); margin-inline: auto; }
+  .serif, h1, h2, h3 { font-family: 'Noto Serif SC', serif; }
+  .topbar { background: var(--ink); color: #fff; border-bottom: 1px solid #ffffff1a; }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-block: 18px; }
+  .brand { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 700; letter-spacing: 3px; text-decoration: none; }
+  .back-link { color: #d2d3d6; font-size: 13px; text-decoration: none; }
+  .back-link:hover { color: var(--gold-light); }
+  .hero { position: relative; overflow: hidden; padding: 70px 0 100px; background: var(--ink); color: #fff; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 10%, #c89a3b20, transparent 65%); pointer-events: none; }
+  .hero .wrap { position: relative; }
+  .eyebrow { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 14px; }
+  .hero .eyebrow { color: var(--gold-light); }
+  h1 { font-size: clamp(30px, 4.2vw, 49px); font-weight: 900; line-height: 1.55; letter-spacing: -.5px; }
+  h1 em { color: var(--gold-light); font-style: normal; }
+  .hero-lead { max-width: 690px; font-size: 16px; line-height: 2; color: #d0d1d5; margin-top: 22px; }
+  .hero-note { margin-top: 26px; padding-left: 16px; border-left: 2px solid var(--gold-light); font-size: 14px; color: #eee3cb; }
+  .overview { position: relative; margin-top: -38px; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gold-light); padding: 28px 32px; box-shadow: 0 12px 36px #0e111708; }
+  .overview-label { font-size: 13px; font-weight: 700; color: var(--gold); margin-bottom: 18px; }
+  .flow { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+  .flow li { position: relative; }
+  .flow li:not(:last-child)::after { content: '→'; position: absolute; top: 20px; right: -18px; color: #b5a78b; }
+  .step-num { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+  .flow h2 { font-size: 17px; margin: 4px 0 7px; }
+  .flow p { font-size: 12px; line-height: 1.9; color: var(--muted); }
+  .jump-links { display: flex; gap: 12px 28px; flex-wrap: wrap; padding-top: 24px; font-size: 13px; color: var(--muted); }
+  .jump-links a { text-decoration: none; border-bottom: 1px solid var(--border); }
+  .jump-links a:hover { color: var(--gold); }
+  .section { padding-top: 76px; }
+  .section-title { font-size: clamp(25px, 3vw, 33px); font-weight: 900; line-height: 1.65; }
+  .section-intro { max-width: 780px; margin-top: 15px; color: var(--text); font-size: 15px; line-height: 2; }
+  .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .process-card { background: var(--white); border: 1px solid var(--border); padding: 28px; }
+  .process-card h3 { font-size: 20px; margin: 8px 0 12px; }
+  .process-card p { font-size: 14px; color: var(--text); line-height: 2; }
+  .process-card .benefit { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--gold); font-weight: 500; font-size: 13px; }
+  .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 16px; }
+  .tags span { background: var(--bg); padding: 4px 10px; font-size: 12px; color: var(--muted); }
+  .evidence { margin-top: 28px; background: var(--white); border: 1px solid var(--border); }
+  .evidence + .evidence { margin-top: 22px; }
+  .evidence-head { padding: 26px 28px 22px; display: flex; gap: 20px; justify-content: space-between; align-items: flex-start; }
+  .evidence-head h3 { font-size: 21px; margin-top: 4px; }
+  .evidence-head p { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 720px; }
+  .evidence-badge { flex-shrink: 0; color: var(--gold); background: var(--gold-pale); padding: 7px 12px; font-size: 12px; }
+  .screenshot-link { display: block; position: relative; margin: 0 28px; overflow: hidden; border: 1px solid var(--border); background: #fff; text-decoration: none; cursor: zoom-in; }
+  .screenshot-link img { display: block; width: 100%; height: auto; }
+  .screenshot-link.coach-preview { max-height: 320px; }
+  .image-hint { position: absolute; bottom: 12px; right: 12px; padding: 5px 12px; background: var(--ink); color: #fff; font-size: 12px; border: 1px solid #ffffff50; }
+  .evidence-points { padding: 22px 28px 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .evidence-points strong { display: block; font-size: 14px; margin-bottom: 5px; }
+  .evidence-points p { font-size: 12px; color: var(--muted); line-height: 1.9; }
+  .figure-note { padding: 0 28px 24px; font-size: 12px; color: var(--muted); }
+  .logic { margin-top: 28px; border-top: 1px solid var(--border); }
+  .logic-row { display: grid; grid-template-columns: 52px 200px 1fr; gap: 20px; align-items: start; padding: 25px 0; border-bottom: 1px solid var(--border); }
+  .logic-number { font-family: 'Noto Serif SC', serif; font-size: 26px; color: var(--gold); line-height: 1.5; }
+  .logic-row h3 { font-size: 18px; line-height: 1.7; }
+  .logic-row p { color: var(--text); font-size: 14px; line-height: 2; }
+  .quality-note { margin-top: 24px; padding: 22px 26px; background: var(--gold-pale); border-left: 3px solid var(--gold); }
+  .quality-note strong { display: block; font-size: 16px; margin-bottom: 6px; }
+  .quality-note p { color: var(--text); font-size: 13px; line-height: 2; }
+  .example { display: grid; grid-template-columns: 1fr 1.2fr; margin-top: 28px; border: 1px solid var(--border); background: var(--white); }
+  .example-need { background: #efebe3; padding: 30px; }
+  .example-need h3 { font-size: 22px; margin-bottom: 14px; }
+  .example-need p { color: var(--text); font-size: 14px; line-height: 2; }
+  .example-pick { padding: 30px; }
+  .example-pick h3 { font-size: 19px; margin-bottom: 14px; }
+  .check-list { list-style: none; }
+  .check-list li { position: relative; padding-left: 20px; font-size: 14px; color: var(--text); margin-bottom: 12px; }
+  .check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .example-pick .example-result { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--gold); font-size: 14px; font-weight: 700; }
+  .talk { margin-top: 76px; padding: 38px 40px; background: var(--ink); color: #fff; }
+  .talk .eyebrow { color: var(--gold-light); }
+  .talk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+  .talk h2 { font-size: 27px; line-height: 1.6; }
+  .copy-button { flex-shrink: 0; background: transparent; color: var(--gold-light); border: 1px solid #e8c06a70; padding: 8px 15px; cursor: pointer; font-size: 13px; }
+  .copy-button:hover { background: #e8c06a16; }
+  .talk blockquote { font-size: 16px; color: #dcdde0; line-height: 2.2; }
+  .talk blockquote p + p { margin-top: 16px; }
+  .talk blockquote strong { color: var(--gold-light); font-weight: 500; }
+  .talk-closing { padding-top: 24px; margin-top: 26px; border-top: 1px solid #ffffff26; font-family: 'Noto Serif SC', serif; font-size: 20px; color: #fff; }
+  .copy-status { min-height: 24px; margin-top: 12px; font-size: 12px; color: var(--gold-light); }
+  .faq { margin-top: 24px; border-top: 1px solid var(--border); }
+  .faq details { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .faq summary { cursor: pointer; font-weight: 700; font-size: 15px; }
+  .faq details p { margin: 14px 0 0; color: var(--text); font-size: 14px; line-height: 2; max-width: 850px; }
+  .return-link { display: inline-block; margin-top: 32px; font-size: 14px; text-decoration: none; color: var(--gold); border-bottom: 1px solid var(--gold); }
+  footer { margin-top: 70px; padding: 30px 24px; text-align: center; background: var(--ink); color: #b1b2b8; font-size: 12px; }
+  dialog { position: fixed; inset: 0; margin: auto; width: min(96vw, 2400px); max-width: 96vw; max-height: 92vh; padding: 0; background: #fff; color: var(--ink); border: 1px solid var(--border); }
+  dialog::backdrop { background: #080b12d9; }
+  .dialog-toolbar { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 18px; background: #fff; border-bottom: 1px solid var(--border); z-index: 1; }
+  .dialog-toolbar p { font-size: 13px; }
+  .dialog-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .dialog-toolbar button { padding: 5px 14px; background: var(--ink); color: #fff; border: 0; cursor: pointer; white-space: nowrap; }
+  .dialog-toolbar .zoom-button { background: var(--gold-pale); color: var(--gold); }
+  .dialog-viewport { overflow: auto; max-height: 74vh; }
+  .dialog-image { display: block; width: 100%; height: auto; }
+  .dialog-image.original-size { width: auto; max-width: none; }
+  .dialog-original { display: block; padding: 12px 18px; color: var(--gold); font-size: 13px; }
+  @media (max-width: 768px) {
+    .wrap { width: calc(100% - 32px); }
+    .hero { padding: 48px 0 76px; }
+    h1 { font-size: clamp(28px, 5.5vw, 40px); }
+    .hero-lead { font-size: 14px; }
+    .hero-note { font-size: 13px; }
+    .overview { padding: 24px; }
+    .flow { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .flow li:not(:last-child)::after { content: none; }
+    .section { padding-top: 52px; }
+    .process-grid { grid-template-columns: 1fr; }
+    .process-card { padding: 24px; }
+    .evidence-head { padding: 22px 20px 18px; display: block; }
+    .evidence-head h3 { font-size: 19px; }
+    .evidence-badge { display: inline-block; margin-top: 12px; }
+    .screenshot-link { margin-inline: 20px; }
+    .screenshot-link.coach-preview { max-height: 200px; }
+    .image-hint { font-size: 10px; bottom: 5px; right: 5px; padding: 3px 7px; }
+    .evidence-points { grid-template-columns: 1fr; padding: 20px; gap: 16px; }
+    .figure-note { padding: 0 20px 20px; }
+    .logic-row { grid-template-columns: 34px 1fr; gap: 8px 12px; padding-block: 22px; }
+    .logic-row p { grid-column: 2; }
+    .logic-row h3 { padding-top: 3px; }
+    .example { grid-template-columns: 1fr; }
+    .example-need, .example-pick { padding: 24px; }
+    .talk { margin-top: 52px; padding: 28px 24px; }
+    .talk-head { flex-wrap: wrap; gap: 16px; }
+    .talk h2 { font-size: 24px; }
+    .talk blockquote { font-size: 14px; }
+    .talk-closing { font-size: 18px; }
+    .jump-links { gap: 12px 20px; }
+    .dialog-toolbar { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
+    .dialog-toolbar p { width: 100%; font-size: 12px; }
+    .dialog-toolbar button { font-size: 12px; padding: 5px 10px; }
+    .dialog-viewport { max-height: 65vh; }
+  }
+  @media (max-width: 380px) {
+    .brand { font-size: 13px; letter-spacing: 1px; }
+    .back-link { font-size: 12px; }
+    .overview { padding: 20px; }
+    .flow { gap: 20px 16px; }
+    .flow h2 { font-size: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  @media print {
+    body { background: #fff; }
+    .topbar, .jump-links, .copy-button, .copy-status, .image-hint, .return-link, dialog { display: none; }
+    .hero, .talk { background: #fff; color: #111; padding: 24px 0; }
+    h1 em, .hero .eyebrow, .hero-lead, .hero-note, .talk .eyebrow, .talk blockquote, .talk blockquote strong, .talk-closing { color: #333; }
+    .overview { margin-top: 0; box-shadow: none; }
+    .section { padding-top: 32px; }
+    .talk { margin-top: 32px; }
+    .screenshot-link.coach-preview { max-height: none; }
+    .process-card, .logic-row, .example { break-inside: avoid; }
+    footer { margin-top: 30px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">华北交付中心</a>
+    <a class="back-link" href="index.html#parent-resources">← 返回家长资料</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <p class="eyebrow">伴学教练择优匹配机制 · 试课 / 正课</p>
+      <h1 id="page-title">从几千名伴学教练中，<br>为孩子选出<em>合适的那一位</em>。</h1>
+      <p class="hero-lead">一个订单，汇聚多位教练的主动申请；一次选派，综合孩子需求、教练能力与服务状态。让庞大的师资资源，真正转化为每个孩子的选择空间。</p>
+      <p class="hero-note">把选择做充分，把匹配做具体，把质量落实到每一项依据。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="overview" aria-label="匹配流程概览">
+      <p class="overview-label">一眼看懂：孩子的需求，如何变成一次有依据的选派</p>
+      <ol class="flow">
+        <li><span class="step-num">01 / 需求下单</span><h2>先了解孩子</h2><p>把年级、科目、学习情况和上课安排说清楚。</p></li>
+        <li><span class="step-num">02 / 主动申请</span><h2>教练评估后报名</h2><p>教练结合自身能力与时间，选择适合的订单申请。</p></li>
+        <li><span class="step-num">03 / 数据比较</span><h2>把候选人看全面</h2><p>结合教练档案、历史服务记录和系统限制比较。</p></li>
+        <li><span class="step-num">04 / 综合选派</span><h2>排课老师把关</h2><p>权衡匹配度与服务安排，选定本次合适的教练。</p></li>
+      </ol>
+    </section>
+    <nav class="jump-links" aria-label="本页导航">
+      <a href="#how-it-works">流程怎么走</a>
+      <a href="#system-evidence">看真实系统</a>
+      <a href="#why-it-works">为什么有保障</a>
+      <a href="#parent-talk">一分钟讲给家长听</a>
+    </nav>
+
+    <section class="section" id="how-it-works" aria-labelledby="process-title">
+      <p class="eyebrow">从孩子出发 / 让选择更充分</p>
+      <h2 class="section-title" id="process-title">每一位教练的选定，<br>都经过四步认真比较。</h2>
+      <p class="section-intro">这套“投标式”机制，可以理解为<strong>教练主动申请、平台综合择优</strong>。这里比的是谁更适合这个孩子：教练先判断自己能否胜任，排课老师再站在孩子的角度做综合选择。</p>
+      <div class="process-grid">
+        <article class="process-card">
+          <span class="step-num">01 / 先把需求说清楚</span>
+          <h3>一份订单，就是一份匹配任务。</h3>
+          <p>无论预约试课还是安排正课，先在系统中提交需求。年级科目、当前基础、希望解决的问题、上课时间与课时安排越明确，后续比较就越有方向。</p>
+          <div class="tags"><span>年级科目</span><span>学习基础</span><span>学习目标</span><span>上课安排</span></div>
+          <p class="benefit">家长得到的：围绕自己孩子的具体需求找教练。</p>
+        </article>
+        <article class="process-card">
+          <span class="step-num">02 / 让教练主动评估</span>
+          <h3>愿意申请，是匹配的第一步。</h3>
+          <p>后台几千名伴学教练，根据订单要求，结合自己的学科能力、带学经验和时间安排选择申请。主动申请让教练有机会先评估：这个孩子的需求，我能否承接？</p>
+          <p class="benefit">家长得到的：从主动申请的候选教练中进一步择优。</p>
+        </article>
+        <article class="process-card">
+          <span class="step-num">03 / 把能力与记录放在一起看</span>
+          <h3>每个候选人，都有比较依据。</h3>
+          <p>系统呈现教练的院校专业、学科成绩、带生情况、学管评级、家长评分等信息，并显示相关派单限制。排课老师可以结合这些信息，交叉判断教练的能力与服务状态。</p>
+          <p class="benefit">家长得到的：选派有资料、有记录，也有规则约束。</p>
+        </article>
+        <article class="process-card">
+          <span class="step-num">04 / 由排课老师综合选定</span>
+          <h3>把数据，放回孩子的实际情况。</h3>
+          <p>排课老师综合考虑孩子的基础与性格、教练的学科优势与引导风格、可用时间及当前带生负荷，从候选教练中选定本次更合适的人选。申请是进入比较，最终选派还要经过人工把关。</p>
+          <p class="benefit">家长得到的：能力、沟通方式和持续服务安排一起考虑。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="system-evidence" aria-labelledby="evidence-title">
+      <p class="eyebrow">真实系统 / 看得见的选派依据</p>
+      <h2 class="section-title" id="evidence-title">“认真为孩子挑教练”，<br>在系统里有具体的样子。</h2>
+      <p class="section-intro">从一笔订单有多少人申请，到每位候选教练的资料和限制，选派所需的信息呈现在同一个工作流程里。点击截图可放大查看。</p>
+
+      <figure class="evidence">
+        <figcaption class="evidence-head">
+          <div><span class="step-num">系统实景 01 / 订单与申请人数</span><h3>一个孩子的需求，可以有多位教练来申请。</h3><p>截图中的订单覆盖试课和正课，列出了年级科目、预约时间、课时及申请人数。</p></div>
+          <span class="evidence-badge">本图一笔订单：34 人申请</span>
+        </figcaption>
+        <a class="screenshot-link" href="assets/coach-matching/order-applications.png" target="_blank" rel="noopener" data-image-title="订单与申请人数 · 完整系统截图" aria-label="放大查看订单与申请人数完整系统截图">
+          <img src="assets/coach-matching/order-applications.png" width="2282" height="1316" loading="lazy" alt="订单列表截图：试课与正课均有教练申请，其中一笔七年级数学试课订单显示34人申请；同时记录预约时间、排单状态及排单负责人。">
+          <span class="image-hint" aria-hidden="true">点击放大 ↗</span>
+        </a>
+        <div class="evidence-points">
+          <div><strong>需求有记录</strong><p>年级、科目、试课或正课及时间安排，为匹配提供清晰起点。</p></div>
+          <div><strong>候选有空间</strong><p>图中不同订单有 6、15、21、34 等不同申请人数，提供进一步比较的机会。</p></div>
+          <div><strong>进度可跟进</strong><p>接单截止、排单状态及负责人有记录，便于发现超时、跟进安排。</p></div>
+        </div>
+        <p class="figure-note">申请人数是截图中各订单当时的状态，实际人数随需求、时间及可用教练变化。</p>
+      </figure>
+
+      <figure class="evidence">
+        <figcaption class="evidence-head">
+          <div><span class="step-num">系统实景 02 / 候选教练综合比较</span><h3>申请之后，还有资料比较和选派把关。</h3><p>教练选派页同时呈现主动申请名单、系统推荐教练，以及候选人的能力与服务信息。</p></div>
+          <span class="evidence-badge">多维信息辅助判断</span>
+        </figcaption>
+        <a class="screenshot-link coach-preview" href="assets/coach-matching/coach-selection.png" target="_blank" rel="noopener" data-image-title="候选教练综合比较 · 完整系统截图" aria-label="放大查看候选教练综合比较完整系统截图">
+          <img src="assets/coach-matching/coach-selection.png" width="1874" height="1486" loading="lazy" alt="教练选派截图：显示申请接课老师名单34人、系统推荐教练20人，以及教练院校专业、学管评级、信用分、家长评分、转化记录、学科成绩、在读和带生人数；部分教练标记禁止派单。">
+          <span class="image-hint" aria-hidden="true">点击查看完整截图 ↗</span>
+        </a>
+        <div class="evidence-points">
+          <div><strong>能力能比较</strong><p>结合院校专业、学科成绩、相关认证和引导风格，判断能否承接需求。</p></div>
+          <div><strong>服务有参考</strong><p>结合学管评级、家长评分、在读人数和带生经验，判断服务表现与精力安排。</p></div>
+          <div><strong>限制看得见</strong><p>图中有“禁止派单”标记及原因提示，提醒选派时核对相应资格要求。</p></div>
+        </div>
+        <p class="figure-note">历史评分、试课与续课转化记录需要结合样本量理解，是综合判断的参考；孩子的实际适配情况仍需通过课程反馈检验。</p>
+      </figure>
+    </section>
+
+    <section class="section" id="why-it-works" aria-labelledby="quality-title">
+      <p class="eyebrow">机制的价值 / 把质量关口前移</p>
+      <h2 class="section-title" id="quality-title">为什么这套机制，<br>能让服务质量更有保障？</h2>
+      <p class="section-intro">它把师资规模、教练意愿、系统记录和人工判断接在一起。每一层解决一个问题，共同提高找到合适教练的机会。</p>
+      <div class="logic">
+        <article class="logic-row"><span class="logic-number">01</span><h3>师资池大，<br>选择空间更充分。</h3><p>几千名教练意味着可以覆盖更多学科优势、沟通风格和可用时段。孩子需求越具体，丰富的师资组合越能为匹配提供空间；进入申请名单后，再逐一比较适配情况。</p></article>
+        <article class="logic-row"><span class="logic-number">02</span><h3>先主动申请，<br>再做双向匹配。</h3><p>教练先根据订单判断能力与时间是否适合，排课老师再结合孩子需求评估候选人。两端都参与判断，有助于提前发现能力或时间上的不合适，减少无效匹配。</p></article>
+        <article class="logic-row"><span class="logic-number">03</span><h3>规则和数据，<br>让把关有依据。</h3><p>学科资料、带生经验、家长反馈、当前带生情况与派单限制放在一起看，可以从多个角度核对。资格要核对、服务表现要参考、带生负荷要考虑，选派理由因此更具体。</p></article>
+        <article class="logic-row"><span class="logic-number">04</span><h3>人工综合判断，<br>照顾孩子的差异。</h3><p>同样是数学薄弱，有的孩子需要耐心拆解，有的需要启发思路，有的更需要节奏与习惯引导。排课老师把这些个体差异与教练特点放在一起权衡，让“有能力”进一步走向“适合这个孩子”。</p></article>
+        <article class="logic-row"><span class="logic-number">05</span><h3>持续服务能力，<br>在选派时就考虑。</h3><p>时间能否配合、教练当前带多少学生、能否投入足够精力，都影响后续服务。把这些因素提前纳入判断，有助于减少安排冲突，让试课体验与正课衔接更有基础。</p></article>
+      </div>
+      <aside class="quality-note">
+        <strong>“最佳匹配”的标准，是适合这个孩子，并且能够稳定服务。</strong>
+        <p>具体到本次订单，就是在符合条件、能够承接的候选人中，综合能力、沟通与时间安排择优。这套机制为服务质量提供前置保障；上课后的实际适配度，还要结合孩子的课堂体验与家长反馈继续检验。</p>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="example-title">
+      <p class="eyebrow">举个例子 / 家长一听就明白</p>
+      <h2 class="section-title" id="example-title">教练的优势，要用在孩子的需要上。</h2>
+      <div class="example">
+        <div class="example-need"><p class="eyebrow">假设有这样一个需求</p><h3>七年级数学，<br>基础不牢，也不太敢提问。</h3><p>家长希望教练讲得耐心、能带着孩子梳理思路，并且能固定在周末上课。这个订单，需要把学科能力、沟通方式和时间安排一起考虑。</p></div>
+        <div class="example-pick"><h3>排课老师会重点权衡什么？</h3><ul class="check-list"><li>是否具备对应学科能力，并有相关年级的带学经验。</li><li>引导风格是否适合基础薄弱、表达较少的孩子。</li><li>家长反馈和服务记录，能否提供有价值的参考。</li><li>周末时间是否匹配，当前带生负荷是否允许持续投入。</li></ul><p class="example-result">把孩子的需要，与教练的长处真正对上。</p></div>
+      </div>
+    </section>
+
+    <section class="talk" id="parent-talk" aria-labelledby="talk-title">
+      <p class="eyebrow">家长沟通 / 招生老师可直接使用</p>
+      <div class="talk-head"><h2 id="talk-title">一分钟，把这套机制讲明白。</h2><button class="copy-button" id="copy-talk" type="button">复制沟通话术</button></div>
+      <blockquote id="talk-script">
+        <p>“您预约试课或安排正课后，我们先把孩子的学习需求和上课要求录入系统。后台几千名伴学教练，会结合自己的能力和时间，主动申请适合的订单。</p>
+        <p>然后，排课老师综合比较：谁擅长孩子需要的内容，谁的引导方式更合拍，谁有精力持续带好孩子。教练资料、家长评分、带生情况和资格限制，都是选派依据。</p>
+        <p>您看到的是选定的一位教练，背后是<strong>‘需求说清楚、教练主动选、数据一起看、专人综合挑’</strong>这四步。几千名教练的资源，最终用在为您孩子认真做这一次选择上。”</p>
+      </blockquote>
+      <p class="talk-closing">几千名教练是选择的底气，为每个孩子认真比较，才是服务的诚意。</p>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <p class="eyebrow">家长常问 / 把细节讲透</p>
+      <h2 class="section-title" id="faq-title">关于匹配，您可能还想了解。</h2>
+      <div class="faq">
+        <details><summary>试课和正课，都走这套匹配机制吗？</summary><p>两类订单都可以通过系统提交需求、接受教练申请，再由排课老师综合选派。试课重点关注本次体验与适配情况；安排正课时，还要结合持续上课的时间和服务安排判断。</p></details>
+        <details><summary>申请人数越多，就一定匹配得越好吗？</summary><p>申请人数多，意味着比较空间更大。最终仍要看候选教练是否符合条件、能否解决孩子的具体问题、时间与精力是否匹配。截图中的申请人数只是各订单当时的情况。</p></details>
+        <details><summary>系统有这么多数据，排课老师为什么还要人工选择？</summary><p>数据帮助了解教练，人工判断负责把这些信息与孩子的实际需求联系起来。孩子的性格、表达习惯、学习困难和家庭安排，都需要综合权衡，因此由排课老师完成最终选派。</p></details>
+        <details><summary>教练选定后，怎样判断是不是真的合适？</summary><p>可以重点观察：孩子是否听得懂、愿不愿意提问，教练能否发现具体卡点，后续安排能否稳定配合。把这些具体体验反馈给招生或排课老师，作为后续服务安排的判断依据。</p></details>
+      </div>
+      <a class="return-link" href="index.html#parent-resources">← 返回家长资料，查看其他沟通素材</a>
+    </section>
+  </div>
+</main>
+
+<footer>华北交付中心 · 专业 · 严谨 · 负责</footer>
+
+<dialog id="image-dialog" aria-labelledby="image-dialog-title">
+  <div class="dialog-toolbar"><p id="image-dialog-title"></p><div class="dialog-actions"><button class="zoom-button" type="button" id="zoom-image" aria-pressed="false">原尺寸查看</button><button type="button" id="close-image" autofocus>关闭 ×</button></div></div>
+  <div class="dialog-viewport"><img class="dialog-image" id="dialog-image" alt=""></div>
+  <a class="dialog-original" id="dialog-original" target="_blank" rel="noopener">打开原图，可进一步缩放查看 ↗</a>
+</dialog>
+
+<script>
+  const imageDialog = document.getElementById('image-dialog');
+  let savedBodyOverflow = '';
+  document.querySelectorAll('.screenshot-link').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || typeof imageDialog.showModal !== 'function') return;
+      event.preventDefault();
+      document.getElementById('image-dialog-title').textContent = link.dataset.imageTitle;
+      document.getElementById('dialog-image').src = link.getAttribute('href');
+      document.getElementById('dialog-image').alt = link.querySelector('img').alt;
+      document.getElementById('dialog-image').classList.remove('original-size');
+      document.getElementById('zoom-image').textContent = '原尺寸查看';
+      document.getElementById('zoom-image').setAttribute('aria-pressed', 'false');
+      document.getElementById('dialog-original').href = link.getAttribute('href');
+      savedBodyOverflow = document.body.style.overflow;
+      imageDialog.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('close-image').addEventListener('click', () => imageDialog.close());
+  document.getElementById('zoom-image').addEventListener('click', event => {
+    const zoomed = document.getElementById('dialog-image').classList.toggle('original-size');
+    event.currentTarget.textContent = zoomed ? '适应宽度' : '原尺寸查看';
+    event.currentTarget.setAttribute('aria-pressed', String(zoomed));
+  });
+  imageDialog.addEventListener('click', event => { if (event.target === imageDialog) {
+    const bounds = imageDialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) imageDialog.close();
+  } });
+  imageDialog.addEventListener('close', () => { document.body.style.overflow = savedBodyOverflow; });
+
+  document.getElementById('copy-talk').addEventListener('click', async () => {
+    const script = document.getElementById('talk-script');
+    const status = document.getElementById('copy-status');
+    const text = Array.from(script.querySelectorAll('p')).map(p => p.textContent).join('\n\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = '话术已复制，可以粘贴发送。';
+    } catch {
+      const selection = window.getSelection();
+      if (selection) {
+        const range = document.createRange();
+        range.selectNodeContents(script);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+      status.textContent = '请长按或选中上方话术，使用系统复制功能。';
+    }
+  });
+</script>
+</body>
+</html>
