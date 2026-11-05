@@ -103,10 +103,11 @@
     font-weight: 300;
   }
   .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 56px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto;
     position: relative;
   }
   .stat-item {
@@ -360,7 +361,9 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .hero { padding: 56px 20px 48px; }
-    .hero-stats { gap: 32px; }
+    .hero-stats { gap: 12px; }
+    .stat-num { font-size: clamp(20px, 6.5vw, 36px); }
+    .stat-label { font-size: 11px; letter-spacing: .5px; }
     .subjects-grid {
       grid-template-columns: 1fr;
       padding: 0 16px 40px;
@@ -392,16 +395,16 @@
   <p>汇聚顶尖师资力量，系统化教学管理，持续追踪提分成果</p>
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-num">3000+</div>
+      <div class="stat-num">10000+</div>
       <div class="stat-label">数理化师资</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">985/211</div>
+      <div class="stat-label">名校师资占比高</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">20+</div>
       <div class="stat-label">平均提分</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">37分</div>
-      <div class="stat-label">最快提分 · 高三 · 4小时</div>
     </div>
   </div>
 </section>
@@ -416,7 +419,7 @@
   <a href="math-teachers.html" class="subject-card">
     <div class="subject-icon">数</div>
     <div class="subject-name">数学</div>
-    <div class="subject-stat"><strong>2982</strong> 师资团队</div>
+    <div class="subject-stat"><strong>6000+</strong> 师资团队</div>
     <div class="subject-stat">平均提分 <strong>20+</strong></div>
     <div class="subject-arrow">查看师资团队 →</div>
   </a>
@@ -424,7 +427,7 @@
   <a href="physics-teachers.html" class="subject-card">
     <div class="subject-icon">物</div>
     <div class="subject-name">物理</div>
-    <div class="subject-stat"><strong>1123</strong> 师资团队</div>
+    <div class="subject-stat"><strong>3000+</strong> 师资团队</div>
     <div class="subject-stat">平均提分 <strong>20+</strong></div>
     <div class="subject-arrow">查看师资团队 →</div>
   </a>
@@ -432,7 +435,7 @@
   <a href="chemistry-teachers.html" class="subject-card">
     <div class="subject-icon">化</div>
     <div class="subject-name">化学</div>
-    <div class="subject-stat"><strong>839</strong> 师资团队</div>
+    <div class="subject-stat"><strong>2000+</strong> 师资团队</div>
     <div class="subject-stat">平均提分 <strong>20+</strong></div>
     <div class="subject-arrow">查看师资团队 →</div>
   </a>

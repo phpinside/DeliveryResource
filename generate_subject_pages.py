@@ -33,7 +33,8 @@ SUBJECT_CONFIGS = {
   <button class="filter-btn" data-filter="135+">135分+</button>
   <button class="filter-btn" data-filter="comp">有竞赛奖项</button>""",
         "hero_text": "精选已明确选择数学学科的伴学教练，覆盖小学、初中、高中数学基础巩固、应试提分与思维训练",
-        "total_label": "在册数学教练",
+        "registered_count": "6000+",
+        "total_label": "在册数学教练 · 持续增长中",
     },
     "PHYSICS": {
         "output": Path("physics-teachers.html"),
@@ -64,7 +65,8 @@ SUBJECT_CONFIGS = {
   <button class="filter-btn" data-filter="85+">85分+</button>
   <button class="filter-btn" data-filter="comp">有竞赛奖项</button>""",
         "hero_text": "精选已明确选择物理学科的伴学教练，覆盖初高中物理提分、建模与应试训练",
-        "total_label": "在册物理教练",
+        "registered_count": "3000+",
+        "total_label": "在册物理教练 · 持续增长中",
     },
     "CHEMISTRY": {
         "output": Path("chemistry-teachers.html"),
@@ -94,7 +96,8 @@ SUBJECT_CONFIGS = {
   <button class="filter-btn" data-filter="85+">85分+</button>
   <button class="filter-btn" data-filter="comp">有竞赛奖项</button>""",
         "hero_text": "精选已明确选择化学学科的伴学教练，覆盖初高中化学基础巩固、实验理解与应试提分",
-        "total_label": "在册化学教练",
+        "registered_count": "2000+",
+        "total_label": "在册化学教练 · 持续增长中",
     },
 }
 
@@ -498,7 +501,7 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
   <p>$hero_text</p>
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-num">$total_count</div>
+      <div class="stat-num">$registered_count</div>
       <div class="stat-label">$total_label</div>
     </div>
     <div class="stat-item">
@@ -799,6 +802,7 @@ def render_page(config: dict[str, object], records: list[dict[str, object]]) -> 
         hero_char=config["hero_char"],
         subject_cn=config["subject_cn"],
         hero_text=config["hero_text"],
+        registered_count=config["registered_count"],
         total_count=len(records),
         total_label=config["total_label"],
         high_count=high_count,
