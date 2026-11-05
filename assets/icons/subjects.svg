@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#456c8b" color="#456c8b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+  <title id="title">学科师资</title>
+  <style>.icon-wash { fill: currentColor; fill-opacity: .12; stroke: none; } .icon-solid { fill: currentColor; stroke: none; }</style>
+  <rect class="icon-wash" x="3" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="3" width="7" height="7" rx="1.5"/><circle cx="17" cy="6.5" r="3.5"/><path d="m6.5 14 4 7h-8Z"/><path d="M14 17.5h7M17.5 14v7"/>
+</svg>

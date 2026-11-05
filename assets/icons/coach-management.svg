@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#456c8b" color="#456c8b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+  <title id="title">教练管理与调度</title>
+  <style>.icon-wash { fill: currentColor; fill-opacity: .12; stroke: none; } .icon-solid { fill: currentColor; stroke: none; }</style>
+  <rect class="icon-wash" x="2" y="3" width="20" height="15" rx="2"/><rect x="2" y="3" width="20" height="15" rx="2"/><circle cx="8" cy="8" r="2"/><path d="M4.5 15a3.5 3.5 0 0 1 7 0M15 8h4m-4 4h3M9 22h6m-3-4v4"/>
+</svg>

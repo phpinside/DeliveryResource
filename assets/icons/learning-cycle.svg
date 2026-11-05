@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#35776e" color="#35776e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+  <title id="title">六环学习方法</title>
+  <style>.icon-wash { fill: currentColor; fill-opacity: .12; stroke: none; } .icon-solid { fill: currentColor; stroke: none; }</style>
+  <path class="icon-wash" d="M12 8c-2-1-4-1-6-.5v9c2-.5 4-.5 6 .5 2-1 4-1 6-.5v-9c-2-.5-4-.5-6 .5Z"/><path d="M12 8c-2-1-4-1-6-.5v9c2-.5 4-.5 6 .5 2-1 4-1 6-.5v-9c-2-.5-4-.5-6 .5Zm0 0v9M3 8a9.5 9.5 0 0 1 16-4M19 1v3h-3M21 16a9.5 9.5 0 0 1-16 4M5 23v-3h3"/>
+</svg>
