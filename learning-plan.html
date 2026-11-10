@@ -1,11 +1,113 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>专属学习规划书 · 华北交付中心</title>
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习规划书</title>
+<style>
+:root{--g:#0f6b57;--gd:#0d3f3a;--gl:#eaf4f0;--au:#c9964a;--aul:#faf4ea;--tx:#1d2b2a;--mu:#5d6d6b;--bd:#dce8e4}
+*{box-sizing:border-box;margin:0}
+body{font:15px/1.8 -apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:var(--tx);background:#f4f7f6}
+.wrap{max-width:900px;margin:0 auto;background:#fff;box-shadow:0 0 40px #0001}
+.hero{background:linear-gradient(135deg,var(--gd),var(--g));color:#fff;padding:64px 48px 48px;position:relative}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--au),#e8cf9a)}
+.brand{letter-spacing:.2em;font-size:13px;opacity:.85}
+.hero h1{font:700 36px/1.35 "Songti SC","Noto Serif SC",serif;margin:18px 0 10px}
+.meta{opacity:.85;font-size:13px}
+.verdict{margin-top:28px;padding:18px 22px;background:#ffffff1a;border-left:4px solid var(--au);border-radius:0 8px 8px 0;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:28px 48px 0}
+.stat{background:var(--gl);border-radius:12px;padding:16px;text-align:center}
+.stat b{display:block;font:700 28px/1.2 "Songti SC",serif;color:var(--g)}.stat span{font-size:12px;color:var(--mu)}
+section{padding:36px 48px 4px}
+.no{color:var(--au);font-weight:700;letter-spacing:.15em;font-size:12px}
+h2{font:700 24px/1.4 "Songti SC","Noto Serif SC",serif;color:var(--gd);margin:2px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--bd)}
+h3{font-size:15px;color:var(--g);margin:18px 0 6px}
+p{margin:6px 0}.mu{color:var(--mu);font-size:13px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{border:1px solid var(--bd);border-radius:12px;padding:16px 18px;background:#fff}
+.card.ok{background:var(--gl)}.card.warn{background:var(--aul);border-color:#efdfc0}
+ul,ol{padding-left:20px}li{margin:3px 0}
+table{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:13.5px;border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+th{background:var(--gl);color:var(--gd);text-align:left;padding:9px 12px}
+td{padding:9px 12px;border-top:1px solid var(--bd);vertical-align:top}tr:nth-child(even) td{background:#fafcfb}
+tr.rec td{background:var(--aul);font-weight:600}
+.note{margin:12px 0;padding:12px 16px;background:var(--aul);border-left:4px solid var(--au);border-radius:0 8px 8px 0;font-size:13.5px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 10px}
+.chain i{font-style:normal;background:var(--gl);border-radius:20px;padding:3px 12px;font-size:13px}.chain em{color:var(--au);font-style:normal}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0}
+.tier{border-radius:12px;padding:16px;text-align:center;border:1px solid var(--bd)}
+.tier.x{background:var(--gd);color:#fff}.tier b{display:block;font:700 30px "Songti SC",serif}.tier span{font-size:12px;opacity:.8}
+footer{margin-top:36px;padding:24px 48px 40px;background:var(--gl);font-size:12.5px;color:var(--mu)}
+@media(max-width:700px){.hero,section,.stats,footer{padding-left:20px;padding-right:20px}.stats{grid-template-columns:1fr 1fr}.cols,.tiers{grid-template-columns:1fr}.hero h1{font-size:27px}table{display:block;overflow-x:auto}}
+@media print{body{background:#fff}.wrap{box-shadow:none}section,.card,table,.tiers{break-inside:avoid}@page{size:A4;margin:10mm}}
+</style>
 </head>
 <body>
+<div class="wrap" id="app"></div>
+<script>
+/* ===== 填写区：老师填表 → AI 按此结构生成 JSON（字段含义见右侧注释）===== */
+const PLAN = {
+  brand:"鼎伴学 · 智能教育 高效提升",
+  title:"初三数学中考冲刺规划书",
+  student:"刘博雯", grade:"九年级", region:"北京西城", textbook:"人教版",
+  coach:"陈教练", date:"2026 年 11 月 8 日",
+  score:{now:83, full:120},                       // 近期校内成绩（须有满分）
+  exam:{name:"中考数学", full:100, floor:85, expect:90, stretch:95, weeks:32}, // 目标三档由教师确认
+  sched:{perWeek:2, minutes:90, hoursPerSession:2}, // 每周次课、每次分钟、每次课时数
+  verdict:"博雯的代数综合已是优势。要把数学稳定带到 90+，最该投入的不是“多刷题”，而是三件事：圆综合第二问的拆解流程、长步骤计算的稳定、几何证明的完整书写。",
+  strengths:["课堂接受能力好，代数综合水平较高，基础与中档小题输出稳定","愿意订正复盘，大题有书写推导步骤的习惯","具备处理综合题的基础，起点是“精准突破”而非“从零补”"],
+  gaps:["圆综合第二问：容易没有思路、难以动笔","长步骤推导中计算容易失误","几何证明推理链条跳步，倒角、线段转化时卡壳","分类讨论意识不足，容易遗漏情况","二次函数带参、翻折、恒成立类压轴小问，需提示才能推进"],
+  evidenceNote:"以上来自信息单与教练观察，第 1 次课将用博雯自己的试卷逐题验证，如有出入规划同步修改。",
+  fit:[["代数综合强","不重复投入，每周只保留少量代数综合题保持手感"],["有订正复盘习惯","采用“错因卡 + 复测”闭环，把已有习惯用起来"],["书写步骤习惯好","重点放在推理链条是否完整、有无依据"],["圆综第二问没思路","前 20 课时中 8 课时专攻，练“从问题倒推条件”"],["长步骤易算错","回代验算成为每次课固定动作，另设计算纠偏课时"],["分类讨论遗漏","在含参、动点题里嵌入“分类讨论检查清单”"],["校内正学二次函数与圆","与校内进度同步，不超前、不另起炉灶"]],
+  notdo:["不追偏题怪题，优先提升几何中档到综合题的得分能力","不整章重学七、八年级，只对倒角相关小节做查漏","不靠加题量：每周自主练习 3 次、每次约 25 分钟"],
+  chains:[["几何线",["三角形外角、全等","倒角与线段转化","圆中辅助线","圆综合第二问"],"博雯的卡点在中段“倒角、线段转化”，所以先练这一环，而不是直接堆圆综大题。"],["代数线",["联立方程、最值","含参、翻折、恒成立","二次函数压轴小问"],"基础与中档已稳，缺的是把复杂设问转化为熟悉小问题。"],["计算线",["分步演算","回代验算","长步骤不丢分"],"一处失误会让后面的步骤分一起丢，要靠固定动作而非细心。"]],
+  split:"90 分的拆法（规划口径）：基础与中档题稳定得分约 75–80 分 + 综合题前两问约 10–15 分。这是“优先保前两问、不强求每题满分”的依据。",
+  hours:[{h:10,label:"10",goal:"能力指标达标；暂不设校内分数目标"},{h:20,label:"20",goal:"下一次校内同类考试向保底档靠拢：约 87 分以上（120 满分口径）"},{h:40,label:"40",goal:"校内期末向期望档：约 92–96 分（120 满分口径）"},{h:70,label:"70",goal:"圆综与二次函数前两问稳定，中考卷口径得分率约 80% 以上"},{h:115,label:"110–120",goal:"保底 85+ → 期望 90+，冲刺 95+"}],
+  hoursNote:"课时越少，对应档位越保守。若只安排到 20 课时，请把期望放在保底档；若您的期望高于对应档位，我们会在该节点把差距和所需条件当面讲清。",
+  conditions:"按时上课；每周自主练习基本完成；校内进度与规划大体匹配。每周真正盯的是过程指标（突破口、计算失误数、证明有无跳步），分数是结果。连续两次同类复测未达标，就回到前置知识、减少新内容比例并与您重新对齐目标，不用“单纯加量”解决。",
+  lessons1:[["第1次","1–2","诊断定位","用近期试卷逐题归因；圆综同难度前测","失分地图、错因卡","前测基线"],["第2次","3–4","圆综合·条件挖掘与倒角","梳理衍生条件（半径相等、直径对直角、同弧圆周角）","圆条件清单卡","课末小测"],["第3次","5–6","圆综合·第二问反向倒推","从问题倒推所需条件，改掉“等灵感”","倒推流程卡","复测1 + 中期反馈"],["第4次","7–8","计算纠偏 + 二次函数同步","分步演算、回代验算；联立、取值范围、翻折","计算错因归档","课末小测；提出续课建议"],["第5次","9–10","后测与成果总结","圆综、计算、二次函数中档后测与讲评","前后测对比、10 课时成果报告","后测"]],
+  accept1:["圆综第二问：5 道同难度题中，独立写出有效突破口 ≥ 3 道（以前测为对照）","长步骤计算：连续 3 道综合大题，回代验算后计算性失分 ≤ 1 处","后测：圆综中档第二问独立完成 ≥ 3/5"],
+  pace1:"10 课时的任务是“找准问题、建立流程、看到第一次变化”，不会解决全部问题。中期反馈在第 3 次课当天发给您，续课建议在第 4 次课提出，无需等到最后才做决定。",
+  lessons2:[["第6次","11–12","圆综合·辅助线套路","连半径、构直角、做垂线、连弦；归纳倒角模型","课末小测"],["第7次","13–14","圆综合·动点与特殊位置猜想","先看特殊位置，再做一般推导；探究数量关系","课末小测"],["第8次","15–16","证明书写 + 模型查漏","完整书写证明；查漏三角形外角、全等判定与应用","证明题抽查"],["第9次","17–18","二次函数·含参、翻折、恒成立","把复杂设问拆成熟悉小问题；嵌入分类讨论检查","同难度题组"],["第10次","19–20","阶段后测与反馈","中考难度圆综、二次函数中档后测","20 课时成果报告"]],
+  goal20:"20 课时末目标：中考难度圆综 6 题中前两问独立完成 ≥ 4 题；证明题抽查无跳步；含参、翻折类二次函数中档题独立完成 ≥ 3/5。",
+  alloc:[["诊断定位",2,"先用证据确认，再决定后面怎么排"],["圆综合",8,"最大卡点，需“讲—练—复测”两轮才稳定"],["计算纠偏",1,"重在习惯，每次课另有贯穿"],["二次函数同步",3,"已有基础，重点补含参、翻折、恒成立"],["证明与模型查漏",2,"解决跳步与模型储备不足"],["阶段后测与反馈",4,"两次复核，用数据决定下一步"]],
+  roadmap:[["一","11–12 月（已细排）","圆综攻坚、计算纠偏、思路筑基","圆综中档第二问能独立推导"],["二","12 月–2 月（期末、寒假）","复盘圆与二次函数错题；圆综适度拔高；寒假建议每周 3–4 次课集中突破","中考难度圆综独立完成前两问"],["三","2–6 月","整套实战；压轴分层训练（优先前两问）；个人高频错题库；每次模考后复盘","整套卷波动缩小，向 90+ 靠拢"]],
+  roadNote:"远期只定方向和里程碑，并以第 10、20 课时的复测结果修订。一模、二模等时间以学校和区里通知为准。",
+  weekly:[["上课","每周 2 次，每次 90 分钟（4 课时）；寒假可增至每周 3–4 次"],["一次课","回顾反馈 10′ → 核心讲解 25′ → 独立推导与纠错 40′ → 总结与任务 15′"],["自主练习","每周 3 次、每次约 25 分钟；综合大题先独立推导 5–8 分钟再对照"],["家长","每周约 10 分钟：看课后反馈（学了什么、表现证据、下周任务），帮助稳定学习时间"]],
+  weeklyNote:"连续多道同类题出错时暂停刷新题，回头梳理例题与模型。九年级校内作业和休息同样重要，时间不足时我们调整频次与周期，不强行加任务。",
+  options:[["A · 10 课时（5 次课，约 2.5 周）","诊断 + 第一轮提升，拿到第一次前后测对比","想先看到效果再决定"],["B · 20 课时（10 次课，约 5 周）· 推荐","完成圆综“讲—练—复测”两轮，覆盖到 12 月中旬","想真正解决最大卡点",1],["C · 约 40 课时（20 次课，约 10 周）","覆盖到期末前后，对应期望档的课时量","以期末和中考为明确节点"]],
+  optNote:"推荐 B：圆综第二问是最大卡点，10 课时只能建立流程、见到第一次变化，要在校内考试中体现，通常需要第二轮训练巩固。",
+  steps:["核对第 02 节的基本信息和现状描述","确定每周两个固定上课时段","首次课请带近两次数学试卷和圆、二次函数的错题本","第 3 次课当天您将收到第一次中期反馈"],
+  modules:"当前主线：九年级圆、二次函数（与校内同步）。查漏式穿插（合计约 2 课时，不整章重学）：三角形的外角（11.2）、全等三角形的判定与应用（12.2、12.3）。",
+  disclaimer:"本规划属于教学安排建议。目标为规划值，受试卷难度、校内进度、出勤与练习完成度影响，不构成分数保证；校内卷与中考卷不可直接比较。具体成效以实际学习、测评记录和动态复盘为准。"
+};
+
+/* ===== 渲染层：不要改 ===== */
+const $=(t,c,h)=>`<${t}${c?` class="${c}"`:""}>${h}</${t}>`;
+const tbl=(hd,rows,rec)=>$("table","",$("tr","",hd.map(x=>$("th","",x)).join(""))+rows.map(r=>`<tr${r._r?' class="rec"':""}>`+r.map(c=>$("td","",c)).join("")+"</tr>").join(""));
+const li=a=>$("ul","",a.map(x=>$("li","",x)).join(""));
+const sec=(n,t,b)=>$("section","",$("div","no","0"+n+" ／ SECTION")+$("h2","",t)+b);
+function render(P){
+ const pct=Math.round(P.score.now/P.score.full*100), gap=P.exam.expect-pct;
+ const S=P.sched, sessH=S.hoursPerSession;
+ let n=0, o="";
+ o+=$("div","hero",$("div","brand",P.brand)+$("h1","",`${P.student}同学 · ${P.title}`)+$("div","meta",`${P.grade} · ${P.textbook} · ${P.region}　｜　规划教练：${P.coach}　｜　${P.date}`)+$("div","verdict",P.verdict));
+ o+=$("div","stats",[[`${P.score.now}/${P.score.full}`,`近期校内数学（折算约 ${pct}）`],[`${P.exam.expect}+`,`${P.exam.name}目标（满分 ${P.exam.full}）`],[`约 ${P.exam.weeks} 周`,"距离中考"],[`${S.perWeek*sessH} 课时/周`,`每周 ${S.perWeek} 次课 × ${S.minutes} 分钟`]].map(x=>$("div","stat",$("b","",x[0])+$("span","",x[1]))).join(""));
+ o+=sec(++n,"我们看到的"+P.student,$("div","cols",$("div","card ok",$("h3","","已经具备的优势")+li(P.strengths))+$("div","card warn",$("h3","","当前优先突破")+li(P.gaps)))+$("p","mu",P.evidenceNote));
+ o+=sec(++n,"为什么这份规划是为"+P.student+"量身定的",tbl(["她的特点","方案里的对应设计"],P.fit)+$("h3","","我们特意不做的事")+li(P.notdo));
+ o+=sec(++n,"为什么先攻这三处：知识之间的依赖",P.chains.map(c=>$("h3","",c[0])+$("div","chain",c[1].map(x=>$("i","",x)).join($("em","","→")))+$("p","mu",c[2])).join(""));
+ const tiers=[["保底",P.exam.floor,"按计划完成但提升偏慢时的合理下限"],["期望",P.exam.expect,"按计划完成、投入正常时的主目标"],["冲刺",P.exam.stretch,"投入高、试卷难度合适时的上限"]];
+ o+=sec(++n,"目标与得分地图",$("p","",`${P.score.now}/${P.score.full} 折算约 ${pct}%；${P.exam.name}满分 ${P.exam.full}，${P.exam.expect} 分意味着得分率约 ${P.exam.expect}%，需提升约 ${gap} 个百分点。折算仅帮助理解，不是预测。`)+$("div","tiers",tiers.map((t,i)=>$("div","tier"+(i==1?" x":""),$("span","",t[0]+"档")+$("b","",t[1]+"+")+$("span","",t[2]))).join(""))+$("div","note",P.split)+$("h3","","累计课时与目标的对应（规划值）")+tbl(["累计课时","次课","大约时间","对应目标"],P.hours.map(r=>{const s=r.h/sessH;return[r.label+" 课时",Math.round(s)+" 次",(s/S.perWeek).toFixed(1)+" 周起",r.goal]}))+$("p","mu",P.hoursNote)+$("p","",P.conditions));
+ o+=sec(++n,"前 10 课时（5 次课）逐次课表",tbl(["次课","课时","主题","这次课做什么","当次产出","检测"],P.lessons1)+$("h3","","10 课时验收标准（规划值）")+li(P.accept1)+$("div","note",P.pace1));
+ o+=sec(++n,"第 11–20 课时（5 次课）",tbl(["次课","课时","主题","重点","检测"],P.lessons2)+$("p","",P.goal20)+$("h3","","20 课时分配依据")+tbl(["模块","课时","为什么这样分"],P.alloc)+$("p","mu",`合计 ${P.alloc.reduce((a,b)=>a+b[1],0)} 课时`));
+ o+=sec(++n,"第 21 课时之后：到中考的路线图",tbl(["阶段","大致时间","方向","目标"],P.roadmap)+$("p","mu",P.roadNote));
+ o+=sec(++n,"每周怎么执行",tbl(["项目","安排"],P.weekly)+$("p","",P.weeklyNote));
+ o+=sec(++n,"推荐方案与下一步",tbl(["方案","内容","适合谁"],P.options.map(r=>{const x=r.slice(0,3);x._r=r[3];return x}))+$("p","",P.optNote)+$("h3","","接下来的四步")+$("ol","",P.steps.map(x=>$("li","",x)).join(""))+$("p","mu",P.modules));
+ o+=$("footer","",P.disclaimer);
+ document.getElementById("app").innerHTML=o;
+ document.title=`${P.student} · ${P.title}`;
+}
+render(PLAN);
+</script>
 </body>
 </html>
